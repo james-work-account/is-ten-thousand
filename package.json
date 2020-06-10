@@ -1,6 +1,6 @@
 {
   "name": "is-ten-thousand",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "is-thousand isn't 10x enough",
   "main": "index.js",
   "scripts": {
@@ -27,7 +27,7 @@
   },
   "homepage": "https://github.com/james-work-account/is-ten-thousand#readme",
   "devDependencies": {
-    "jest": "^24.9.0"
+    "jest": "^26.0.1"
   },
   "dependencies": {
     "five": "^0.8.0",
@@ -52,7 +52,7 @@
     "is-thirteen": "^2.0.0",
     "is-thousand": "0.0.2",
     "is-zero": "^1.0.0",
-    "jquery": "^3.4.1",
+    "jquery": "^3.5.1",
     "jquery-basic-arithmetic-plugin": "^1.1.0",
     "left-pad": "^1.3.0",
     "material-design-icons": "^3.0.1",
