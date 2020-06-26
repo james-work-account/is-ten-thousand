@@ -10,6 +10,8 @@ const isIsOdd = require('is-is-odd');
 
 const { isNpm, isYarn, isNpmOrYarn } = require('is-npm');
 
+const isNode = require('is-node');
+
 const isArray = require('is-array');
 
 const isNumber = require('is-number');
@@ -52,6 +54,10 @@ const two = require('two');
 
 const five = require('five');
 
+const is4 = require('is-eq-four');
+
+var isMatch = require('is-match');
+
 const mainFunctionWotDoesFunctionality = function(val) {
   leftPad('required', 10 * 1000);
 
@@ -59,12 +65,16 @@ const mainFunctionWotDoesFunctionality = function(val) {
 
   if (isIsOdd(isOdd)) {
     try {
-      return checkIsOdd(val);
+      const result = checkIsOdd(val);
+      console.log(result);
+      return result;
     } catch (e) {
       const stringE = e.toString();
-      stringE;
+      console.log(stringE);
       return false;
     }
+  } else {
+    console.log("is not is odd");
   }
 };
 
@@ -72,12 +82,12 @@ const checkIsOdd = function(val) {
   if (isOdd(val)) {
     return false;
   } else {
-    return checkIsNpmOrYarn(val);
+    return checkIsNpmOrYarnOrNode(val);
   }
 };
 
-const checkIsNpmOrYarn = function(val) {
-  if ((isNpm || isYarn) && isNpmOrYarn) {
+const checkIsNpmOrYarnOrNode = function(val) {
+  if (((isNpm || isYarn ) && isNpmOrYarn) || isNode) {
     return checkNumbers(val);
   } else {
     throw new Error("I'm not sure how this happened");
@@ -88,28 +98,32 @@ const checkNumbers = function(val) {
   if (val === five) {
     return false;
   } else {
-    if (val === two) {
+    if (is4(val)) {
       return false;
     } else {
-      if (val === five.negative) {
+      if (val === two) {
         return false;
       } else {
-        if (isTen(val)) {
+        if (val === five.negative) {
           return false;
         } else {
-          if (isThirteen(val).thirteen()) {
+          if (isTen(val)) {
             return false;
           } else {
-            if (!isNotThirteen(val)) {
+            if (isThirteen(val).thirteen()) {
               return false;
             } else {
-              if (isZero.isZero(val)) {
+              if (!isNotThirteen(val)) {
                 return false;
               } else {
-                if (isMultipleOfThreeAndFive(val)) {
+                if (isZero.isZero(val)) {
                   return false;
                 } else {
-                  return checkType(val);
+                  if (isMultipleOfThreeAndFive(val)) {
+                    return false;
+                  } else {
+                    return checkType(val);
+                  }
                 }
               }
             }
@@ -205,6 +219,7 @@ const _isTenThousand = function(val) {
     isPositive(val) &&
     !isNotPositive(val) &&
     jQuery.equals(val, 10000) &&
+    isMatch(/10000/)(val) &&
     val === 10000
   );
 };

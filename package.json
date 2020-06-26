@@ -32,9 +32,12 @@
   "dependencies": {
     "five": "^0.8.0",
     "is-array": "^1.0.1",
+    "is-eq-four": "^1.1.0",
     "is-is-odd": "^1.0.2",
+    "is-match": "^1.0.0",
     "is-multiple-of-three-and-five": "^1.0.1",
     "is-negative": "^2.1.0",
+    "is-node": "^1.0.2",
     "is-not-negative": "^1.0.3",
     "is-not-positive": "^1.0.0",
     "is-not-thirteen": "0.0.1",
