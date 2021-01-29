@@ -1,4 +1,4 @@
-const isTenThousand = require('./index');
+const isTenThousand = require("./index");
 
 function getNotTenThousand() {
   const number = Math.ceil(Math.random() * 100000);
