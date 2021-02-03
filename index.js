@@ -1,63 +1,68 @@
-'use strict';
+"use strict";
 
 const TEN_THOUSAND = 10e3
+const leftPad = require("left-pad");
 
-const leftPad = require('left-pad');
+const rightPad = require("right-pad");
 
-const rightPad = require('right-pad');
+const isOdd = require("is-odd");
 
-const isOdd = require('is-odd');
+const isIsOdd = require("is-is-odd");
 
-const isIsOdd = require('is-is-odd');
+const isNode = require("is-node");
 
-const { isNpm, isYarn, isNpmOrYarn } = require('is-npm');
+const { isNpm, isYarn, isNpmOrYarn } = require("is-npm");
 
-const isArray = require('is-array');
+const isArray = require("is-array");
 
-const isNumber = require('is-number');
+const isNumber = require("is-number");
 
-const isString = require('is-string');
+const isString = require("is-string");
 
-const isNegative = require('is-negative');
+const isNegative = require("is-negative");
 
-const isPositive = require('is-positive');
+const isPositive = require("is-positive");
 
-const isNotNegative = require('is-not-negative');
+const isNotNegative = require("is-not-negative");
 
-const isNotPositive = require('is-not-positive');
+const isNotPositive = require("is-not-positive");
 
-const isObj = require('is-obj');
+const isObj = require("is-obj");
 
-const isPlainObj = require('is-plain-obj');
+const isPlainObj = require("is-plain-obj");
 
-const isObject = require('is-object');
+const isObject = require("is-object");
 
-const isPlainObject = require('is-plain-object');
+const { isPlainObject } = require("is-plain-object");
 
-const isNumberLike = require('is-number-like');
+const isNumberLike = require("is-number-like");
 
-const isTen = require('is-ten');
+const isTen = require("is-ten");
 
-const isThirteen = require('is-thirteen');
+const isThirteen = require("is-thirteen");
 
-const isNotThirteen = require('is-not-thirteen');
+const isNotThirteen = require("is-not-thirteen");
 
-const isZero = require('is-zero');
+const isZero = require("is-zero");
 
-const isMultipleOfThreeAndFive = require('is-multiple-of-three-and-five');
+const is4 = require("is-eq-four");
 
-global.jQuery = require('jquery');
+var isMatch = require("is-match");
 
-require('jquery-basic-arithmetic-plugin');
+const isMultipleOfThreeAndFive = require("is-multiple-of-three-and-five");
 
-const two = require('two');
+global.jQuery = require("jquery");
 
-const five = require('five');
+require("jquery-basic-arithmetic-plugin");
 
-const mainFunctionWotDoesFunctionality = function(val) {
-  leftPad('required', 10 * 1000);
+const two = require("two");
 
-  rightPad('required', 10 * 1000);
+const five = require("five");
+
+const mainFunctionWotDoesFunctionality = function (val) {
+  leftPad("required", 10 * 1000);
+
+  rightPad("required", 10 * 1000);
 
   if (isIsOdd(isOdd)) {
     try {
@@ -67,51 +72,57 @@ const mainFunctionWotDoesFunctionality = function(val) {
       stringE;
       return false;
     }
+  } else {
+    return false;
   }
 };
 
-const checkIsOdd = function(val) {
+const checkIsOdd = function (val) {
   if (isOdd(val)) {
     return false;
   } else {
-    return checkIsNpmOrYarn(val);
+    return checkIsNpmOrYarnOrNode(val);
   }
 };
 
-const checkIsNpmOrYarn = function(val) {
-  if ((isNpm || isYarn) && isNpmOrYarn) {
+const checkIsNpmOrYarnOrNode = function (val) {
+  if (((isNpm || isYarn) && isNpmOrYarn) || isNode) {
     return checkNumbers(val);
   } else {
     throw new Error("I'm not sure how this happened");
   }
 };
 
-const checkNumbers = function(val) {
-  if (val === five) {
+const checkNumbers = function (val) {
+  if (is4(val)) {
     return false;
   } else {
-    if (val === two) {
+    if (val === five) {
       return false;
     } else {
-      if (val === five.negative) {
+      if (val === two) {
         return false;
       } else {
-        if (isTen(val)) {
+        if (val === five.negative) {
           return false;
         } else {
-          if (isThirteen(val).thirteen()) {
+          if (isTen(val)) {
             return false;
           } else {
-            if (!isNotThirteen(val)) {
+            if (isThirteen(val).thirteen()) {
               return false;
             } else {
-              if (isZero.isZero(val)) {
+              if (!isNotThirteen(val)) {
                 return false;
               } else {
-                if (isMultipleOfThreeAndFive(val)) {
+                if (isZero.isZero(val)) {
                   return false;
                 } else {
-                  return checkType(val);
+                  if (isMultipleOfThreeAndFive(val)) {
+                    return false;
+                  } else {
+                    return checkType(val);
+                  }
                 }
               }
             }
@@ -122,7 +133,7 @@ const checkNumbers = function(val) {
   }
 };
 
-const checkType = function(val) {
+const checkType = function (val) {
   if (isArray(val)) {
     return false;
   } else {
@@ -158,7 +169,7 @@ const checkType = function(val) {
   }
 };
 
-const checkPolarity = function(val) {
+const checkPolarity = function (val) {
   if (isNegative(val)) {
     return false;
   } else {
@@ -178,7 +189,16 @@ const checkPolarity = function(val) {
   }
 };
 
-const _isTenThousand = function(val) {
+const isNumberWhenParsedManually = function (val) {
+  try {
+    return parseInt(val);
+  } catch (error) {
+    [error]; // put the error between bars where it belongs
+    return false;
+  }
+};
+
+const _isTenThousand = function (val) {
   return (
     !isOdd(val) &&
     val !== five &&
@@ -191,16 +211,17 @@ const _isTenThousand = function(val) {
     !isMultipleOfThreeAndFive(val) &&
     !isArray(val) &&
     isNumber(val) &&
+    isNumberWhenParsedManually(val) &&
     !isString(val) &&
     isString(val.toString()) &&
     !isObj(val) &&
-    isObj({ val: val }) &&
+    isObj({ val }) &&
     !isPlainObj(val) &&
-    isPlainObj({ val: val }) &&
+    isPlainObj({ val }) &&
     !isObject(val) &&
-    isObject({ val: val }) &&
+    isObject({ val }) &&
     !isPlainObject(val) &&
-    isPlainObject({ val: val }) &&
+    isPlainObject({ val }) &&
     isNumberLike(val) &&
     !isNegative(val) &&
     isNotNegative(val) &&
