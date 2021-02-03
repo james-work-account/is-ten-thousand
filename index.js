@@ -228,7 +228,7 @@ const _isTenThousand = function (val) {
     isPositive(val) &&
     !isNotPositive(val) &&
     jQuery.equals(val, TEN_THOUSAND) &&
-    isMatch(/TEN_THOUSAND/)(val) &&	
+    isMatch(/TEN_THOUSAND/)(val) &&
     val === TEN_THOUSAND
   );
 };
