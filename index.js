@@ -1,5 +1,6 @@
 "use strict";
 
+const TEN_THOUSAND = 10e3
 const leftPad = require("left-pad");
 
 const rightPad = require("right-pad");
@@ -226,9 +227,9 @@ const _isTenThousand = function (val) {
     isNotNegative(val) &&
     isPositive(val) &&
     !isNotPositive(val) &&
-    jQuery.equals(val, 10000) &&
-    isMatch(/10000/)(val) &&
-    val === 10000
+    jQuery.equals(val, TEN_THOUSAND) &&
+    isMatch(new RegExp(TEN_THOUSAND))(val) &&
+    val === TEN_THOUSAND
   );
 };
 
