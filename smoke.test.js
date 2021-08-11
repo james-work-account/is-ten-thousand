@@ -10,10 +10,20 @@ function getNotTenThousand() {
 
 const randNum = getNotTenThousand();
 
-test(`${randNum} is not ten thousand`, () => {
-  expect(isTenThousand(randNum)).toBe(false);
-});
+[true, false].map((shouldDoSomethingAsync) => {
+  test(`${randNum} is not ten thousand with shouldDoSomethingAsync = ${shouldDoSomethingAsync}`, () => {
+    if (shouldDoSomethingAsync) {
+      isTenThousand(randNum, true).then((result) => expect(result).toBe(false));
+    } else {
+      expect(isTenThousand(randNum)).toBe(false);
+    }
+  });
 
-test(`10000 is ten thousand`, () => {
-  expect(isTenThousand(10000)).toBe(true);
+  test(`10000 is ten thousand with shouldDoSomethingAsync = ${shouldDoSomethingAsync}`, () => {
+    if (shouldDoSomethingAsync) {
+      isTenThousand(10000, true).then((result) => expect(result).toBe(true));
+    } else {
+      expect(isTenThousand(10000)).toBe(true);
+    }
+  });
 });
