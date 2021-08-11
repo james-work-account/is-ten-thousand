@@ -1,20 +1,34 @@
 /**
- * Note: Numbers greater than 100000 are not accounted for.
+ * Note: Some numbers are not accounted for.
  * I can't prove that they won't return true.
  */
 
 const isTenThousand = require("./index");
 
 function testIsTenThousand(i) {
-  if (i === 10000) {
-    test(`${i} is ten thousand`, () => {
-      expect(isTenThousand(i)).toBe(true);
-    });
-  } else {
-    test(`${i} is not ten thousand`, () => {
-      expect(isTenThousand(i)).toBe(false);
-    });
-  }
+  [true, false].map((shouldDoSomethingAsync) => {
+    if (i === 10000) {
+      test(`${i} is ten thousand with shouldDoSomethingAsync = ${shouldDoSomethingAsync}`, () => {
+        if (shouldDoSomethingAsync) {
+          isTenThousand(i, true)
+            .then((result) => expect(result).toBe(true))
+            .catch((e) => console.log(e, i));
+        } else {
+          expect(isTenThousand(i)).toBe(true);
+        }
+      });
+    } else {
+      test(`${i} is not ten thousand with shouldDoSomethingAsync = ${shouldDoSomethingAsync}`, () => {
+        if (shouldDoSomethingAsync) {
+          isTenThousand(i, true)
+            .then((result) => expect(result).toBe(false))
+            .catch((e) => console.log(e, i));
+        } else {
+          expect(isTenThousand(i)).toBe(false);
+        }
+      });
+    }
+  });
 }
 
 Array.apply(null, Array(100001)).map(function (_, i) {

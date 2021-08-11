@@ -1,6 +1,6 @@
 "use strict";
 
-const TEN_THOUSAND = 10e3
+const TEN_THOUSAND = 10e3;
 const leftPad = require("left-pad");
 
 const rightPad = require("right-pad");
@@ -59,14 +59,20 @@ const two = require("two");
 
 const five = require("five");
 
-const mainFunctionWotDoesFunctionality = function (val) {
-  leftPad("required", 10 * 1000);
+const mainFunctionWotDoesFunctionality = function (val, shouldDoSomethingAsync = false) {
+  const leftPadInput = 10 * (TEN_THOUSAND / 10);
+  const rightPadInput = leftPadInput - 1 + 1;
 
-  rightPad("required", 10 * 1000);
+  leftPad("required", leftPadInput);
+  rightPad("required", rightPadInput);
 
   if (isIsOdd(isOdd)) {
     try {
-      return checkIsOdd(val);
+      if (shouldDoSomethingAsync) {
+        return doSomethingAsync().then((_) => checkIsOdd(val));
+      } else {
+        return checkIsOdd(val);
+      }
     } catch (e) {
       const stringE = e.toString();
       stringE;
@@ -75,6 +81,10 @@ const mainFunctionWotDoesFunctionality = function (val) {
   } else {
     return false;
   }
+};
+
+const doSomethingAsync = async function () {
+  return new Promise((resolve) => setTimeout(resolve, 2000));
 };
 
 const checkIsOdd = function (val) {
