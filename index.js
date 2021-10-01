@@ -59,7 +59,10 @@ const two = require("two");
 
 const five = require("five");
 
-const mainFunctionWotDoesFunctionality = function (val, shouldDoSomethingAsync = false) {
+const mainFunctionWotDoesFunctionality = function (
+  val,
+  shouldDoSomethingAsync = false
+) {
   const leftPadInput = 10 * (TEN_THOUSAND / 10);
   const rightPadInput = leftPadInput - 1 + 1;
 
@@ -84,7 +87,7 @@ const mainFunctionWotDoesFunctionality = function (val, shouldDoSomethingAsync =
 };
 
 const doSomethingAsync = async function () {
-  return new Promise((resolve) => setTimeout(resolve, 2000));
+  return new Promise((resolve) => setTimeout(resolve, 200));
 };
 
 const checkIsOdd = function (val) {

@@ -10,7 +10,7 @@ function testIsTenThousand(i) {
     if (i === 10000) {
       test(`${i} is ten thousand with shouldDoSomethingAsync = ${shouldDoSomethingAsync}`, () => {
         if (shouldDoSomethingAsync) {
-          isTenThousand(i, true)
+          return isTenThousand(i, true)
             .then((result) => expect(result).toBe(true))
             .catch((e) => console.log(e, i));
         } else {
@@ -20,7 +20,7 @@ function testIsTenThousand(i) {
     } else {
       test(`${i} is not ten thousand with shouldDoSomethingAsync = ${shouldDoSomethingAsync}`, () => {
         if (shouldDoSomethingAsync) {
-          isTenThousand(i, true)
+          return isTenThousand(i, true)
             .then((result) => expect(result).toBe(false))
             .catch((e) => console.log(e, i));
         } else {
@@ -31,8 +31,12 @@ function testIsTenThousand(i) {
   });
 }
 
-Array.apply(null, Array(100001)).map(function (_, i) {
-  testIsTenThousand(i - 50000);
+Array.apply(null, Array(10001)).map(function (_, i) {
+  testIsTenThousand(i);
+});
+
+Array.apply(null, Array(10001)).map(function (_, i) {
+  testIsTenThousand(i - 10001);
 });
 
 // just to be sure
