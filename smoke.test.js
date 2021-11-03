@@ -1,4 +1,7 @@
 const isTenThousand = require("./index");
+const { owoify } = require("owoifyx");
+
+console.log(owoify("Hello! Let's run some smoke tests"));
 
 function getNotTenThousand() {
   const number = Math.ceil(Math.random() * 100000);
