@@ -2,6 +2,8 @@
 
 If you need to know if a number is ten thousand.
 
+[![NPM link](https://nodei.co/npm/is-ten-thousand.png?downloads=true&downloadRank=true&stars=true)](https://nodei.co/npm/is-ten-thousand/)
+
 Proud to be featured by [Engineer Man](https://youtu.be/PI5wz2pwXIg?t=51):
 
 [![Thumbnail from Engineer Man's video on "Ridiculous NPM (Node.js) Packages that I wish didn't exist"](https://i3.ytimg.com/vi/PI5wz2pwXIg/maxresdefault.jpg)](https://youtu.be/PI5wz2pwXIg?t=51)
