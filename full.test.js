@@ -4,6 +4,9 @@
  */
 
 const isTenThousand = require("./index");
+const { owoify } = require("owoifyx");
+
+console.log(owoify("Hello! Let's run some tests"));
 
 function testIsTenThousand(i) {
   [true, false].map((shouldDoSomethingAsync) => {
