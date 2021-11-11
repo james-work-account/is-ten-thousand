@@ -242,7 +242,7 @@ const _isTenThousand = function (val) {
     !isNotPositive(val) &&
     jQuery.equals(val, TEN_THOUSAND) &&
     isMatch(new RegExp(TEN_THOUSAND))(val) &&
-    val === TEN_THOUSAND
+    !!Math.floor(1/Math.pow(2, Math.abs(val-TEN_THOUSAND)))
   );
 };
 
